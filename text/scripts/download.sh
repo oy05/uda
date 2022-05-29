@@ -37,9 +37,8 @@ unzip imdb_back_trans.zip && rm imdb_back_trans.zip
 cd ../../
 
 # **** download IMDB data and convert it to csv files ****
-mkdir data/IMDB_raw
-cd data/IMDB_raw
-wget https://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz
-tar xzvf aclImdb_v1.tar.gz && rm aclImdb_v1.tar.gz
+mkdir data/stance-detection
+cd learn2aug/emnlp2022/stance-detection/backtranslation
+cp tweets.csv ~/data/stance-detection
 cd ../..
 python utils/imdb_format.py --raw_data_dir=data/IMDB_raw/aclImdb --train_id_path=data/IMDB_raw/train_id_list.txt --output_dir=data/IMDB_raw/csv
