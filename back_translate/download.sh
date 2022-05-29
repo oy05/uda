@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #!/bin/bash
-cd learn2aug/emnlp2022/stance-detection/backtranslation
+cd learn2aug/emnlp2022/stance-detection/backtranslation/
 cp tweets.txt ~/uda/back_translate
 filename=tweets.txt
 cd
