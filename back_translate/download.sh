@@ -14,4 +14,4 @@
 # limitations under the License.
 #!/bin/bash
 
-filename="tweets.csv"
+filename=tweets.txt
