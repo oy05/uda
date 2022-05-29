@@ -14,6 +14,4 @@
 # limitations under the License.
 #!/bin/bash
 
-filename=back_trans_checkpoints.zip
-wget https://storage.googleapis.com/uda_model/text/${filename}
-unzip ${filename} && rm ${filename}
+filename="tweets.csv"
