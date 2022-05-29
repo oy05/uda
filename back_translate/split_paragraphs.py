@@ -79,7 +79,7 @@ def divide_data_for_worker(contents):
     end = data_per_worker * (worker_id + 1) + remainder
   if worker_id == FLAGS.replicas - 1:
     assert end == len(contents)
-  tf.logging.info("processing data from {:d} to {:d}".format(start, end))
+  tf.compat.v1.logging.info("processing data from {:d} to {:d}".format(start, end))
   contents = contents[start: end]
   return contents
 
