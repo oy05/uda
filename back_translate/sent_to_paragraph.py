@@ -22,7 +22,7 @@ import json
 from absl import app
 from absl import flags
 import tensorflow as tf
-
+tf.to_float = lambda x: tf.cast(x, tf.float32)
 FLAGS = flags.FLAGS
 
 flags.DEFINE_string(
