@@ -17,3 +17,4 @@ cd learn2aug/emnlp2022/stance-detection/backtranslation
 cp tweets.txt ~/uda/backtranslate
 filename=tweets.txt
 cd
+
