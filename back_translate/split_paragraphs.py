@@ -88,10 +88,10 @@ def main(_):
   sent_tokenizer = nltk.tokenize.sent_tokenize
 
 
-  tf.logging.info("loading input data")
-  with tf.gfile.Open(FLAGS.input_file) as inf:
+  tf.compat.v1.logging.info("loading input data")
+  with tf.io.gfile.Open(FLAGS.input_file) as inf:
     contents = inf.readlines()
-  tf.logging.info("finished loading input data")
+  tf.compat.v1.logging.info("finished loading input data")
   assert len(contents) >= FLAGS.replicas
 
   contents = divide_data_for_worker(contents)
@@ -100,7 +100,7 @@ def main(_):
   doc_len = []
   # Split paragraphs into sentences since the model is trained on sentence-level
   # translations.
-  tf.logging.info("splitting sentence")
+  tf.compat.v1.logging.info("splitting sentence")
   for i in range(len(contents)):
     contents[i] = contents[i].strip()
     if isinstance(contents[i], bytes):
@@ -108,7 +108,7 @@ def main(_):
     sent_list = sent_tokenizer(contents[i])
     has_long = False
     if i % 100 == 0:
-      tf.logging.info("splitting sentence {:d}".format(i))
+      tf.compat.v1.logging.info("splitting sentence {:d}".format(i))
     for split_punc in [".", ";", ",", " ", ""]:
       if split_punc == " " or not split_punc:
         offset = 100
@@ -134,12 +134,12 @@ def main(_):
     for st in sent_list:
       new_contents += [st]
 
-  tf.logging.info("finished spliting paragraphs")
+  tf.compat.v1.logging.info("finished spliting paragraphs")
 
-  with tf.gfile.Open(FLAGS.output_file, "w") as ouf:
+  with tf.io.gfile.Open(FLAGS.output_file, "w") as ouf:
     for st in new_contents:
       ouf.write(st + "\n")
-  with tf.gfile.Open(FLAGS.doc_len_file, "w") as ouf:
+  with tf.io.gfile.Open(FLAGS.doc_len_file, "w") as ouf:
     json.dump(doc_len, ouf)
 
 
