@@ -34,9 +34,9 @@ flags.DEFINE_string(
 
 
 def main(argv):
-  with tf.gfile.Open(FLAGS.input_file) as inf:
+  with tf.io.gfile.Open(FLAGS.input_file) as inf:
     sentences = inf.readlines()
-  with tf.gfile.Open(FLAGS.doc_len_file) as inf:
+  with tf.io.gfile.Open(FLAGS.doc_len_file) as inf:
     doc_len_list = json.load(inf)
   cnt = 0
   print("\n" * 2)
