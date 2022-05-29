@@ -14,7 +14,7 @@
 # limitations under the License.
 #!/bin/bash
 cd learn2aug/emnlp2022/stance-detection/backtranslation/
-cp tweets.txt ~/uda/back_translate
+cp tweets.txt ~/uda/back_translate/
 filename=tweets.txt
 cd
 
