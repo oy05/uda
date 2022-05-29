@@ -64,6 +64,7 @@ def split_sent_by_punc(sent, punc, offset):
     else:
       sent_list += [sent[start:]]
       break
+  print(sent_list)
   return sent_list
 
 
