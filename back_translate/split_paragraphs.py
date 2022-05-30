@@ -48,6 +48,11 @@ flags.DEFINE_integer(
     "worker_id", 0,
     "An argument for parallel preprocessing. See 'replicas' for more details")
 
+def contains_words(sentence):
+  for i in sentence:
+    if isalpha(i):
+        return True
+  return False
 
 def split_sent_by_punc(sent, punc, offset):
   """Further split sentences when nltk's sent_tokenizer fail."""
@@ -139,7 +144,8 @@ def main(_):
 
   with tf.io.gfile.GFile(FLAGS.output_file, "w") as ouf:
     for st in new_contents:
-      ouf.write(st + "\n")
+      if contains_words(st):
+        ouf.write(st + "\n")
   with tf.io.gfile.GFile(FLAGS.doc_len_file, "w") as ouf:
     json.dump(doc_len, ouf)
 
