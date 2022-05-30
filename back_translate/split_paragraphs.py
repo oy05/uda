@@ -50,7 +50,7 @@ flags.DEFINE_integer(
 
 def contains_words(sentence):
   for i in sentence:
-    if isalpha(i):
+    if (i >= 'a' and i <= 'z') or (i <= 'Z' and i >= 'A'):
         return True
   return False
 
